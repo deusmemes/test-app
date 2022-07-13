@@ -1,0 +1,9 @@
+.item {
+    width: 100px;
+    padding: 1em;
+    margin: 1em;
+}
+
+.completed {
+    background-color: aqua;
+}
