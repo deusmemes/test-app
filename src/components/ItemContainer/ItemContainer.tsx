@@ -1,6 +1,6 @@
 import ItemComponent from "../Item/Item";
 import Button from "../Button/Button";
-import {Item} from "../../types/Item";
+import {Item} from "../../app/types/Item";
 import styles from './ItemContainer.module.css'
 
 interface Props {

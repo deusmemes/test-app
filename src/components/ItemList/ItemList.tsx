@@ -1,6 +1,6 @@
 import {useState} from "react";
 import ItemContainer from "../ItemContainer/ItemContainer";
-import {Item} from "../../types/Item";
+import {Item} from "../../app/types/Item";
 import AddItem from "../AddItem/AddItem";
 
 const ItemList = () => {
