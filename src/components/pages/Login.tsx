@@ -1,5 +1,6 @@
 import {useLocation, useNavigate} from "react-router-dom";
-import {Paths} from "../../routes/Paths";
+import {useDispatch} from "../../hooks/useAppDispatch";
+import {actions, loginThunk} from "../../app/store/auth/slice";
 
 type Location = {
     fromPage: string
@@ -7,15 +8,10 @@ type Location = {
 
 const Login = () => {
     const location = useLocation()
-    const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const login = () => {
-        const from = location.state as string | undefined
-       if (from != null) {
-           navigate(from)
-       } else {
-           navigate(Paths.Main)
-       }
+        dispatch(loginThunk())
     }
 
     return (

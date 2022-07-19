@@ -5,3 +5,7 @@ export const todo = {
     delete: (id: number) =>`/todo/${id}`,
     update: (id: number) => `/todo/${id}`,
 }
+
+export const auth = {
+    login: () => '/login'
+}

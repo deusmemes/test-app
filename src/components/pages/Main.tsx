@@ -1,15 +1,26 @@
+import {useTypedSelectorHook} from "../../hooks/useTypedSelector";
+import {useDispatch} from "../../hooks/useAppDispatch";
 import {useEffect} from "react";
-import {api} from "../../app/api";
+import {actions} from "../../app/store/todo/slice";
 
 const Main = () => {
+    const dispatch = useDispatch()
+    const todo = useTypedSelectorHook(state => state.todo)
+
     useEffect(() => {
-        api.todo.getAll()
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
+        dispatch(actions.add({
+            title: 'Some title',
+            isCompleted: false,
+            date: new Date()
+        }))
     }, [])
 
     return (
-        <div>main</div>
+        <div>
+            { todo.map((t, i) => (
+                <div key={i}>{t.title}</div>
+            )) }
+        </div>
     )
 }
 

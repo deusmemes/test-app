@@ -1,19 +1,16 @@
 import React from 'react';
-import {Routes, Route} from 'react-router-dom'
-import {Login, Main} from "./components/pages";
-import {Paths} from "./routes/Paths";
-import NotFound from "./components/pages/NotFound";
-import ToDoDetail from "./components/pages/ToDoDetail";
+import Private from "./routes/Private";
+import Public from "./routes/Public";
+import useAuth from "./hooks/useAuth";
 
 function App() {
+    const {isAuth, loading} = useAuth()
+
+    if (loading) return <h2>Loading...</h2>
+
     return (
         <div className="App">
-            <Routes>
-                <Route path={Paths.Login} element={<Login />} />
-                <Route path={Paths.Main} element={<Main />} />
-                <Route path={`${Paths.Main}/:id`} element={<ToDoDetail />} />
-                <Route path={'*'} element={<NotFound />}/>
-            </Routes>
+            { isAuth ? <Private /> : <Public /> }
         </div>
     );
 }

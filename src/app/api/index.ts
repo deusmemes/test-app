@@ -1,14 +1,17 @@
 import axios, {AxiosInstance} from 'axios'
 import {config} from "./config";
 import TodoApi from "./todo.api";
+import UserApi from "./user.api";
 
 class Api {
     private readonly client: AxiosInstance
     public readonly todo: TodoApi
+    public readonly auth: UserApi
 
     constructor() {
         this.client = axios.create(config)
         this.todo = new TodoApi(this)
+        this.auth = new UserApi(this)
 
         this.client.interceptors.response.use((res) => res.data)
         this.client.interceptors.request.use((config) => ({
